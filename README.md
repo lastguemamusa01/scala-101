@@ -172,11 +172,60 @@ Functions
 
 - you can use recursive functions also 
 
+Hige order functions
+
+- function that that other function as parameter or they return a function
+- a first-order function takes only data items
+
+- closure function - is where a function whose return value depends on the value of a variable declared outside of that function
+- give us the ability encapsulate algorithm inside of the function
+
+Scala Operators
+
+- scala has arithmetic, relational , logical , bitwise , and assignment operators
+- Arithmetic operators : +. -. *. / , %
+- relational operators : ==, != , >, <. >=. <=
+- logical operators: &&, ||, !
+- bitwise operators : &, | , ^, ~, <<, >>
+- assigment operators: =, +=, -=, *=, /=, %=
+- scala dont have ++, -- insted use  +=, -=
+- scala math library has abs, sqrt, min,etc.
+- cons operator -> val numbers = 1::2::3::4::Nil    - put values to create a list
 
 
+Decision Statements in scala (If)
+
+How to read from the console
+
+- use Scala.ioStdIn. library
+- readBoolean() , readByte, readChar, etc readLine
 
 
+read from File in Scala
 
+you can use tro or catch to handle errors
+
+pattern matching - compare value or expression, process case statements - like switch statement in java
+
+
+scala support collections
+
+- set - iterable with not duplicable elements
+- map - storing key-value pairs
+- tuple - pairs are the smallest case of tuples. are useful when the function return more than one value with defferent data types
+- in tuple, you can use zip method to create pairs
+- array - must be fixed size, array buffer like vector or arraylist in java for not fixed size
+- list - process same as array, element of the list cannot be changed using an assignment 
+
+Classes, fields and methods
+
+- when we create class - automatically create constructor, getters and setter of field declared.
+
+
+- special type of class named singleton object - used to enforce a single instance of a class, static keyword in java static class
+- singleton is defined as object, not a class. singlton object only have one instance
+
+ - case class - are defined by adding the case keyword before the class keyword
 
 
 
