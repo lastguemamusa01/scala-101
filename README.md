@@ -233,5 +233,415 @@ Classes, fields and methods
 
 
 
+Scala 101 for data science
+
+Spark – big data 
+
+Postgre sql and scala
+
+For Analytic – python and r, scala for scalability
+
+Fuctional computing – compute by evaluating funcions and minimizing the need to maintain state.
+
+Scala can work with jdbc support(relational databases)
+
+Parallel processing – use multiple cores, support for parallel collections and especially important for scaling applications to large data volumes
+
+Apache spartk – big data platform written in scala, supports scala, java, python and R. Distributed cluster processing
+
+You can install scala and configure path to execute in commando scala whenever path you are.
+
+Data Type : 
+Byte, Short, Int , Long, Float, Double, Char
+
+Scala command line - REPL
+
+Types of collections :
+
+Seq(Sequences) – Vectors, Streams, Lists, Queues, Strings, Stacks
+Sets – HashSet, SortedSet, TreeSet, Bitset, ListSet
+Maps – HashMaps, SortedMaps, TreeMaps, ListMpas
+
+Multable collection can change
+Immutable cannot change – just simulate creating new one
+
+Array – mutable collection type - 
+
+In commands  -  temps.    -> if temps are array, you can see all temps array methods
+
+Vector are like array , support indexed access to data in a collection. Vectors are inmutables
+
+Range – is a data structure for representing integer values. Start value to end value
+
+
+Val myRange = 1 to 10  -> imutable collective of 1 to 10
+
+Maps – groups key value pairs - immutable
+
+Val capitals = Map(“Argentina” -> “Buenos Aires”, “Canada”->”Ottawa”, “Egypt”->”Cairo”)
+
+Capitals.keys   ->  list of argentina, Canada
+Capitals.values -> list of buenos aires, Ottawa
+
+Maps in java, dictionaries in python and hashes ruby.
+
+Capitals get “Argentina”  ->   buenos aires
+When not found is None
+
+Capitals(“Canada”)
+
+Capitals contains “Egypt”  – true
+
+Capitals getOrElse(“china”,”no capital found”)
+
+Capitals + (“ireland”->”dublin”) – show the list with Ireland added
+
+Capitals – “liberia” -> list of all but Liberia was removed
+
+Expression
+
+-	Computable statements
+-	Numeric expressions – 
+o	Arithmetic expressions  
+	2+2
+	100-80
+	*, / , %
+-	Relational expression
+o	>, <=, &&, ||, !
+-	Assign operator
+o	var a = 10
+o	c += a
+o	*=, 
+
+Put command c -> you can get value in command repl
+
+Braces to multiple expressions - > 
+println({
+| val a = 2 *3
+| a+4
+|})
+
+
+
+Scala functions 
+
+Def myFunction(a:Int, b:Int) : Int {
+| val c = a*b
+| return c
+| }
+
+myFunction(2,3)
+
+scala classes and objects
+
+val y = Array(“england”, “liberia”)
+
+y.sorted 
+sorted version alphabetical order
+
+class Location(var latitude:int, var lat_direction:Char, var longitude:Int, var long_direction:Char, var altitude:Int )
+
+val loc1 = new Location(45,’N’,120,’W’,300)
+
+loc1.altitude
+
+class myPublicPrivate(val x:Int=0, val y:iNT=0, private val z:Int=0)
+
+val myPP = new myPublicPrivate
+
+myPP.      -> show the variable, but z is not showed because is private
+
+
+parallel processing
+
+parallel collection – multiple core processors
+hyper-thread processors
+
+for loop each time – typical – processing time is slow
+
+
+
+parallel collection allows us to finish computation faster than sequential collections
+
+scala make easy parallel processing 
+
+parallel collections 
+
+-	ParArrays, ParVector and ParHashMap
+
+Convert sequence collections to parallel collections
+
+val rage100 = 1 to 100
+val prng100 = rng100.par
+
+
+rng100.     – you can see all methods for parallel collection
+
+-	Create parallel collections
+
+import scala.collection.parallel.immutable.parVector
+
+val pvec200 = ParVector.range(0,200)
+
+
+val  v = (1 to 100).toArray
+val pv = v.par
+
+v.map(_ * 2)
+
+pv.map(_ * 2)
+
+parallel is much faster
+
+.map -> functional programming concepts
+
+
+Def square(x:Int): Int = { return x*x}
+
+Square(4)
+
+v.map(square(_))
+pv.map(square(_))
+
+
+filter collections
+
+val v = (1 to 10000).toArray
+val pv = v.par
+
+v.length
+
+val pvf = pv.filter(_ > 5000)
+
+pvf.length
+
+val pvf2 = pv.filterNot(_ > 5000)
+
+
+def div3(x:Int) : Boolean = { val y:Int = (x % 3); return (y == 0) }
+
+div3(3)
+
+
+pv.filter(div3(_))
+
+when use parallel collections
+
+- collections with at least 10,000 of elements are good candidates
+- for some types of collections, converting between sequential and parallel collections requires copying the content of collection
+
+-	Best to avoid applying procedures with side effects
+-	Side effects can lead to nondeterminism
+-	Side effects could take affect in a different order each time an operation is executed 
+
+-	In associative operations, the order of operations does not matter
+
+-	If your computation depends on state information about the processing of a collection, and the order of operations matters, then do not use parallel collections
+
+
+Postgre Sql
+
+
+Use JDBC  and prepare statement, you can use as string
+
+Scala and spark
+
+-	Data science – functional programming is well suited to applying computations to data also OO language – allows create objects and methods that keep our data organized structure business problems.
+-	Parallel collections – when working with large data sets. They allows take advantage of multiple CPUs. Big data – distributed processing framework like Spark
+
+-	Advantage
+
+o	Spark is distrubted processing framework written in scala.  Fast processing, fast tha Hadoop for analytics.
+o	Libraries for analytics
+o	Stream processing for near real-time analysis, it is fault tolerant(servers can fail an dprocessing can still continue)
+o	Scalable – easily add servers to a spark cluster,  specially useful in cloud enviroments, easy to add nodes or servers to a cluster
+
+Spark provides packages for distrubted processing that allow us to do data science over big data-sized data sets. Give the ability to the parallel and distributed processing capabilities of the entire cluster servers
+
+Spark has data structure called resilient distributed datasets(RDDs) 
+-	Immutable distributed collection
+-	Organized into logical partitions
+-	Fault-tolerant collection
+-	RDDs may keep data in memory or persisted
+
+Rdds is like parallel collections  
+-	Groups of data of the same type or structure
+-	Data processed in parallel
+-	Fater than working with sequential operations
+
+Rdds differences from parallel collections
+-	Rdds are partitioned by a hash function. Parallel collections  are broken into subsets and distributed across cores or threads within a single server at run time
+-	Rdds are distributed across multiple servers. Paralle collections work across a single server
+-	Rdd data can be easily persisted to permanent storage
+
+Rdd of pairs and four partitions
+
+Partition 1 ,2 ,3 and 4
+Pairs of string and integers
+
+Spark REPL 
+
+In spark/bin
+Execute command
+./spark-shell
+
+Show scala repl
+
+import scala.util.Random
+
+val bigRng = scala.util.Random.shuffle(1 to 100000)
+
+val bigPRng = sc.parallelize(bigRng)    -> convert to Rdd of integers
+
+bigPRng.      -> see what can you do all, statistics(mean, min, max, popStdev(Popularity standard deaviation))
+
+
+mapping functions
+
+bigPRng.take(25)    ->  first 25 numbers
+
+val bigPRng2 = bigPRng.map(_ * 2)
+
+val republic = sc.textFile(“Users/minku/Downloads/pg1497.txt”)
+
+republic.tak(25).foreach(println)
+
+
+republic    -> show the info of the value  -> textfiLE
+
+
+-	Line is anonymous function
+val linesWithSocrates = republic.filter(line => line.contain(“Socrates”))   - rdd can create another rdd
+
+
+Statics over Rdds 
+
+Spark -> big data -> use statitics, 
+
+Descriptive statistics – help us to understand what is the shape of our data. 
+Another Branch of statistics -Hypothesys and make predictions. 
+
+
+import org.apache.spark.mllib.stat.Statistics
+
+
+we have 1 to 100000 RDD data
+
+sample – subset that’s randomly selection from RDD
+
+val x = bigPRng2.takeSample(true,1000) – random sample
+
+if we start with same number it will be always same values
+
+val x = bigPRng2.takeSample(true,1000, 1234) 
+
+descriptive statistics
+
+bigPRng2.mean.  (min,max,)
+
+bigPRng2.stats.   -> return count, mean, stdev, max, min
+
+-	correlations – 
+
+val series1 = Array.fill(100000)(Random.nextDouble)
+val series2 = Array.fill(100000)(Random.nextDouble)
+
+two random series
+
+parallelize the series - rdds
+
+val pseries1 = sc.parallelize(series1)
+val pseries2 = sc.parallelize(series2)
+
+val myCorrelation:Double = Statistics.corr(pseries1, pseries2,”pearson”)   -
+
+highly correlated when is > 0 and < 0 is lowly correlated.
+
+Zero is no correlations
+
+Val distTest = Statistics.kolmogorovSmirnovTest(pseries1,”norm”,0,1)
+
+Rdd – distributed data structures – run across multiple nodes
+A single-node cluster is useful for development and testing
+Big data production enviroments should consider multiple node clusters
+
+
+
+Scala and Spark DataFrames
+
+ Dataframes – kind of relational tables, data structure that is organized into rows, and they have named columns
+
+Import org.apache,spark.sql.SparkSession
+
+Val spark = SparkSession.builder().appNmae(“DataFrameExercise”).getOrCreate()
+
+-	create dataframes
+
+employee.txt file contents : 
+
+id,last_name,email,gender,department,start_date,salary,job_title,region_id
+1,'Kelley','rkelley0@soundcloud.com','Female','Computers','10/2/2009',67470,'Structural Engineer',2
+
+
+Val df_emps = spark.read.option(“header”,”true”).csv(“/Users/minku/Downloads/employee.txt”)
+
+De_emps.take(10)
+
+Df_emps.schema
+
+Df_emps.show.   -> more like table like , only show 20, ctrl r to exit
+
+Df.emps.columns. -> to see what columns we have
+
+We can use sql to grouping and filtering operations
+
+Temporary views
+
+Df_emps.createOrReplaceTempView(“employees”).   – create data structure called employees that we can use SQL on that.
+
+Val sqldf_emps = spark.sql(“SELECT * FROM employees”)
+
+Val sqldf_emps_by_dept = spark.sql(“SELECT department, count(*) FROM employees GROUP BY department”)
+
+
+Sqldf_emps_by_dept.show().   -> to see the sql select 
+
+Joining tables (joining dataframes)
+
+df_emps.show(). - employee
+df_cr.show().  – country
+
+val df_joined = df_emps.join(df_cr,”region_id”)
+
+df_joined.show()
+
+
+-	working with json files to convert to dataframe –
+
+create first spark sessions
+
+
+val df_json_dd = spark.read.json(“/users/minku/downloads/dept_div.json”)
+
+df_json_dd.show()
+
+
+data frames is for data scientist to working with spark and scala
+
+data frames are table-like data structures
+
+spark is very easy to load data from CSV, json and other formats
+
+we can use SQL to filter and aggregate data in data frames and support for joins
+
+additional packages(for scala)
+
+saddle for data manipulation
+breeze for numeric and scientific processing
+Scala-like JDBC for additional support for SQL
+![image](https://user-images.githubusercontent.com/25869911/137048744-a7b1ad6d-f9ac-48b3-83a7-6539c74ebe21.png)
+
+
+
 
 
