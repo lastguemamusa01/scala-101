@@ -639,9 +639,6 @@ additional packages(for scala)
 saddle for data manipulation
 breeze for numeric and scientific processing
 Scala-like JDBC for additional support for SQL
-![image](https://user-images.githubusercontent.com/25869911/137048744-a7b1ad6d-f9ac-48b3-83a7-6539c74ebe21.png)
-
-
 
 
 
